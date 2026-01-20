@@ -72,6 +72,20 @@ Baseline aggregation on `WEB_SALES` joined with dimensions (`DATE_DIM`, `CUSTOME
 - How much improvement is possible without scaling warehouse?
 
 ---
+## 8. Query Profile Checklist (Lab 1)
+
+- Total execution time: ~38 seconds
+- Largest scan node: WEB_SALES table scan (dominant cost)
+- Most expensive join: CUSTOMER → CUSTOMER_ADDRESS
+- Execution nature: Data-bound (Remote Disk I/O dominant, ~87%)
+
+## 9. Key Observations (Plain English)
+
+1. Most of the query time is spent reading data from storage, not processing it.
+2. Filtering on a dimension table does not prune the WEB_SALES fact table effectively.
+3. Joins and aggregation are relatively cheap compared to data scanning.
+
+
 
 *This document captures baseline truth before optimization.*
 
